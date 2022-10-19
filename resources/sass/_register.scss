@@ -1,0 +1,450 @@
+// Fonts
+
+body{ height: 100%; }
+
+div#app{
+    height: 100%;
+
+    main#wrapper{
+        height: 100%;
+
+        header#header{
+            box-shadow: 0 1px 0 rgba(0,0,0,.1);
+            -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+            -moz-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+
+            div#TopBar{
+                background-color: #000;
+
+                .container{
+                    display: flex;
+                    padding: 5px 10px;
+
+                    .TopBar__left{
+                        flex-grow: 1;
+                    }
+
+                    p{
+                        color: #fff;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .TopBar__right{
+                        a{
+                            color: #fff;
+                            margin-right: 8px;
+                        }
+
+                        a:first-of-type{
+                            margin-left: 8px;
+                        }
+                    }
+                }
+            }
+
+            nav.navbar{
+                a.navbar-brand{
+                    img.desktop{
+                        display: block;
+                    }
+
+                    img.mobile{
+                        display: none;
+                    }
+                }
+
+                .nav-link{
+                    padding: 0.1rem 1rem 0.2rem 1rem;
+                    color: #2f2f2f;
+                }
+
+                .sign-up{
+                    border: 1px solid #000;
+                    padding-right: 0 !important;
+                    padding: 0px 5px !important;
+                    border-radius: 50px;
+                    margin-right: 10px;
+
+                    .nav-link{
+                        color: #2f2f2f;
+                    }
+                }
+
+                .login{
+                    border: 1px solid #f15b47;
+                    padding-right: 0 !important;
+                    padding: 0px 5px !important;
+                    border-radius: 50px;
+                    background-color: #f15b47;
+
+                    .nav-link{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        section#section{
+
+            #step1{
+                padding: 80px 0;
+
+                .form{
+                    box-shadow: 0 0 16px 0 rgba(55, 55, 55, 0.12);
+                }
+            }
+
+            #step2, #step3, #step4{
+                height: 58.5vh;
+            }
+
+            .container, .container-fluid{
+                height: 100%;
+
+                > .row{
+                    height: 100%;
+
+                    // Step 1
+                    .form{
+                        //box-shadow: 0 0 16px 0 rgba(55, 55, 55, 0.12);
+
+                        h1{
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+
+                    .form-half{
+                        //box-shadow: 0 0 16px 0 rgba(55, 55, 55, 0.12);
+                        display: flex;
+                        align-items: center;
+
+                        .card{
+                            // width: 60%;
+                            width: 40vw;
+                            border: none;
+                            // box-shadow: 0 0 16px 0 rgba(55, 55, 55, 0.12);
+                        }
+
+                        form{
+                            input#firstName, input#password{
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+
+                    .app-half{
+                        background: #fafafa;
+                        display: flex;
+                        align-items: center;
+
+                        .card{
+                            width: 90%;
+                            border: none;
+                            // height: 90%;
+                            height: 40vh;
+                            box-shadow: 0 0 16px 0 rgba(55, 55, 55, 0.12);
+
+                            .card-body{
+                                padding: 0;
+                                background-color: #f3f3f3;
+
+                                > .row{
+                                    height: 100%;
+                                    overflow: hidden;
+                                }
+
+                                .sidebar{
+                                    background-color: #fff;
+                                    height: 100%;
+                                    color: #444;
+                                    padding: 10px 0 0 10px;
+                                    overflow: hidden;
+
+                                    p{
+                                        margin: 0;
+                                        font-size: 12px;
+                                    }
+
+                                    p.email{
+                                        position: absolute;
+                                        bottom: 10px;
+                                    }
+
+                                    p.name{
+                                        position: absolute;
+                                        bottom: 30px;
+                                        font-weight: bold;
+                                    }
+
+                                    p.companyName{
+                                        position: absolute;
+                                        top: 10px;
+                                        font-weight: bold;
+                                    }
+                                }
+
+                                .col-lg-9{
+                                    padding-left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            form{
+                .button--accent-bg{
+                    background-color: #f15b47 !important;
+                    border-radius: 50px;
+                }
+            }
+        }
+
+        footer#footer{
+            #top-footer{
+                background-color: #fafafa;
+                padding: 20px 0;
+
+                .row{
+                    .text-wrapper{
+                        padding-top: 20px;
+
+                        p{
+                            margin-bottom: 0;
+                        }
+
+                        h4{
+                            font-family: Helvetica, Arial, Lucida, sans-serif;
+                            font-weight: 600;
+                            font-size: 16px;
+                        }
+
+                        ul{
+                            list-style-type: none;
+                            padding-left: 0;
+
+                            li{
+                                padding-bottom: 5px;
+
+                                a{
+                                    color: #58595b;
+                                }
+                            }
+                        }
+                    }
+
+                    #contact-us{
+                        .text-wrapper{
+                            padding-left: 70px;
+                            padding-top: 0;
+                        }
+                    }
+                }
+            }
+
+            #bottom-footer{
+                background-color: #ebe8e5;
+                padding: 5px 10px;
+                // position: absolute;
+                // bottom: 0;
+                width: 100%;
+
+                .container{
+                    p{
+                       color: #666;
+
+                       a{
+                            color: #666;
+                            margin-right: 8px;
+                        }
+
+                        a:first-of-type{
+                            margin-left: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Landscape Tablet
+@media screen and (orientation: landscape) and (max-width: 1080px){
+
+    body{
+        div.registration-form{
+            margin-top: 0 !important;
+
+            main#wrapper{
+
+                section#section{
+                    height: 70vh !important;
+
+                    .app-half{
+                        .card{
+                            .card-body{
+                                height: 100%;
+
+                                .sidebar{
+                                    height: 100%;
+
+                                    p{
+                                        width: 100%;
+                                        font-size: 0.6em !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+// Tablet
+@media screen and (max-width: 991px){
+
+    body{
+        div.registration-form{
+            margin-top: 0 !important;
+
+            main#wrapper{
+                header#header{
+                    nav.navbar{
+                        a.navbar-brand{
+                            flex-grow: 1;
+
+                            img.desktop{
+                                display: none !important;
+                            }
+
+                            img.mobile{
+                                display: block !important;
+                            }
+                        }
+                    }
+                }
+
+                section#section{
+                    .form, .form-half{
+                        box-shadow: none !important;
+                    }
+
+                    .form-half{
+                        padding-bottom: 20px;
+
+                        .card{
+                            width: 100% !important;
+                        }
+                    }
+
+                    .app-half{
+                        .card{
+                            .card-body{
+                                height: 100%;
+
+                                > .row {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                footer#footer{
+                    display: block;
+                }
+            }
+        }
+    }
+
+}
+
+// Mobile
+@media screen and (max-width: 768px){
+
+    body{
+        div.registration-form{
+
+            main#wrapper{
+
+                header#header{
+                    nav.navbar{
+                        .navbar-toggler{
+                            border: none;
+                        }
+                    }
+                }
+
+                section#section{
+                    height: auto !important;
+                    padding: 20px 0 !important;
+
+                    #step1{
+                        padding: 0 !important;
+                    }
+
+                    h1{
+                        font-size: 1.75em;
+                        margin-top: 0 !important;
+                    }
+
+                    form{
+                        .button--accent-bg{
+                            width: 100%;
+                        }
+                    }
+
+                    .app-half{
+                        height: unset !important;
+                        align-items: flex-start !important;
+                        padding-top: 20px !important;
+
+                        .card{
+                            width: unset !important;
+                            height: 70% !important;
+                            // width: 70% !important;
+                        }
+
+                        p{
+                            width: 100%;
+                            font-size: 0.6em !important;
+                        }
+                    }
+                }
+
+                footer#footer{
+                    position: relative !important;
+                    bottom: unset !important;
+
+                    #top-footer{
+                        #contact-us{
+                            img{
+                                display: block;
+                                margin: 0 auto 20px auto;
+                            }
+
+                            .text-wrapper{
+                                padding-left: 0 !important;
+                                text-align: center;
+                            }
+                        }
+
+                        .menu, h4{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    div#app:not(.login):not(.register) main#wrapper footer#footer #top-footer{
+        background-color: #fff;
+    }
+
+}

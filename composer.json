@@ -1,0 +1,94 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "barryvdh/laravel-dompdf": "^0.9.0",
+        "berkayk/onesignal-laravel": "^1.0",
+        "doctrine/dbal": "^2.9",
+        "facade/ignition": "^2.0",
+        "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^2.0",
+        "get-stream/stream": "^3.0",
+        "intervention/image": "^2.4",
+        "junaidnasir/larainvite": "^3.0",
+        "laravel/cashier": "^12.2",
+        "laravel/framework": "^7.0",
+        "laravel/helpers": "^1.1",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-cached-adapter": "~1.0",
+        "nothingworks/blade-svg": "^0.3.1",
+        "pusher/pusher-php-server": "^4.0",
+        "ramsey/uuid": "^3.8",
+        "silber/bouncer": "v1.0.0-rc.8",
+        "silviolleite/laravelpwa": "^1.0",
+        "spatie/geocoder": "^3.4",
+        "spatie/laravel-activitylog": "^3.2",
+        "spatie/laravel-schemaless-attributes": "^1.6",
+        "spatie/laravel-searchable": "^1.2",
+        "yajra/laravel-datatables-oracle": "^9.4"
+    },
+    "require-dev": {
+        "beyondcode/dusk-dashboard": "^2.0",
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "laravel/dusk": "^5.11",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Http/helpers.php"
+        ],
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan migrate --force"
+        ]
+    }
+}
