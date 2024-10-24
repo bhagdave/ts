@@ -21,7 +21,7 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.26.9",
     "sass-loader": "^7.3.1",
-    "vue": "^2.6.11",
+    "vue": "^3.5.12",
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
@@ -37,7 +37,7 @@
     "vue-good-table": "2.16.5",
     "vue-moment": "^4.1.0",
     "vue-native-notification": "^1.1.1",
-    "vue-turbolinks": "^2.1.0",
+    "vue-turbolinks": "^2.2.2",
     "vue-wait": "^1.4.8",
     "vuera": "^0.2.7"
   }
