@@ -13,11 +13,12 @@ class tenantcascade extends Migration
      */
     public function up()
     {
-        
-        Schema::table('tenants', function (Blueprint $table) { 
-            $table->dropForeign(['sub']);
-            $table->foreign('sub')->references('sub')->on('users')->onDelete('cascade');
-        });
+        if (Schema::getConnection()->getDriverName() !== 'sqlite') {
+            Schema::table('tenants', function (Blueprint $table) {
+                $table->dropForeign(['sub']);
+                $table->foreign('sub')->references('sub')->on('users')->onDelete('cascade');
+            });
+        }
     }
 
     /**

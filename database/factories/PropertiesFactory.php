@@ -1,30 +1,26 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
+
 use App\Properties;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Faker\Generator as Faker;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class PropertiesFactory extends Factory
+{
+    protected $model = Properties::class;
 
-$factory->define(Properties::class, function (Faker $faker) {
-    return [
-        'propertyName' => 'TEST_' . Str::random(15),
-        'inputAddress' => $faker->streetAddress,
-        'inputCity' => $faker->city,
-        'inputPostcode' => $faker->postcode,
-        'propertyLat' => $faker->latitude(),
-        'propertyLng' => $faker->longitude(),
-        'propertyType' => 'Social Housing',
-        'created_by_user_id' => 0
-    ];
-});
+    public function definition(): array
+    {
+        return [
+            'propertyName' => 'TEST_' . Str::random(15),
+            'inputAddress' => $this->faker->streetAddress,
+            'inputCity' => $this->faker->city,
+            'inputPostcode' => $this->faker->postcode,
+            'propertyLat' => $this->faker->latitude(),
+            'propertyLng' => $this->faker->longitude(),
+            'propertyType' => 'Social Housing',
+            'created_by_user_id' => 0,
+        ];
+    }
+}

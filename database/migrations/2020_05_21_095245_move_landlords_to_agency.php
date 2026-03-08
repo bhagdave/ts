@@ -9,9 +9,11 @@ class MoveLandlordsToAgency extends Migration
 {
     public function up()
     {
-        Schema::table('landlords', function (Blueprint $table) {
-            $table->dropForeign('landlords_agent_id_foreign');
-        });
+        if (Schema::getConnection()->getDriverName() !== 'sqlite') {
+            Schema::table('landlords', function (Blueprint $table) {
+                $table->dropForeign('landlords_agent_id_foreign');
+            });
+        }
         $landlords = DB::table('landlords')
             ->whereNotNull('agent_id')->get();
         foreach ($landlords as $landlord) {

@@ -21,7 +21,7 @@ class CreateTenantPropertyTest extends TestCase
     }
 
     private function createLoggedInTenant(){
-        $this->user = factory(User::class)->create(
+        $this->user = User::factory()->create(
             ['userType' => 'Tenant', 'registered' => 1]
         );
        
@@ -31,7 +31,7 @@ class CreateTenantPropertyTest extends TestCase
         ]);
         $response->assertRedirect('http://127.0.0.1:8000');
         $this->assertAuthenticatedAs($this->user);
-        $this->tenant = factory(Tenant::class)->create([
+        $this->tenant = Tenant::factory()->create([
             'sub' => $this->user->sub,
             'email' => $this->user->email,
         ]);

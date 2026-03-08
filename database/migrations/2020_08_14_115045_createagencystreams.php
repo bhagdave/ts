@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use App\Agency;
-use App\Agents;
+use App\Agent;
 use App\Stream;
 
 class Createagencystreams extends Migration

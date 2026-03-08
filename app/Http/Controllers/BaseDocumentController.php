@@ -24,18 +24,20 @@ class BaseDocumentController extends Controller
 
     protected function storeFileInS3($request, $id){
         if ($request->has('document')) {
-            $this->createDirectoryForId($id);
+            $disk = config('filesystems.default', 's3');
+            $this->createDirectoryForId($id, $disk);
             $document = $request->file('document');
-            $path = Storage::disk('s3')->put('docs/'.$id, $document, 'protected');
+            $path = Storage::disk($disk)->put('docs/'.$id, $document, 'private');
             return $path; 
         }
         return 'error';
     }
 
-    protected function createDirectoryForId($id){
-        $dirExists = Storage::disk('s3')->exists('docs/'. $id);
+    protected function createDirectoryForId($id, $disk = null){
+        $disk = $disk ?? config('filesystems.default', 's3');
+        $dirExists = Storage::disk($disk)->exists('docs/'. $id);
         if (!$dirExists) {
-            Storage::disk('s3')->makeDirectory( 'docs/'.$id);
+            Storage::disk($disk)->makeDirectory('docs/'.$id);
         }
     }
 

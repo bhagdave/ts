@@ -17,7 +17,7 @@ trait CoreFeatureTest
     protected $tenant;
 
     public function createLoggedInUser($userType = 'Agent', $registered = 0){
-        $this->user = factory(User::class)->create([
+        $this->user = User::factory()->create([
             'registered' => $registered,
             'userType' => $userType,
         ]);
@@ -34,7 +34,7 @@ trait CoreFeatureTest
         if(!$agentUser){
             $agentUser = $this->createLoggedInUser();
         }
-        $this->agent = factory(Agent::class)->create(
+        $this->agent = Agent::factory()->create(
             [
                 'user_id' => $agentUser->sub,
                 'agency_id' => $agencyId
@@ -44,12 +44,12 @@ trait CoreFeatureTest
     }
 
     public function createAgency(){
-        $this->agency = factory(Agency::class)->create();
+        $this->agency = Agency::factory()->create();
     }
 
     public function createTenant($propertyId){
-        $tenantUser = factory(User::class)->create(['userType' => 'Tenant']);
-        $this->tenant = factory(Tenant::class)->create([
+        $tenantUser = User::factory()->create(['userType' => 'Tenant']);
+        $this->tenant = Tenant::factory()->create([
             'sub' => $tenantUser->sub,
             'property_id' => $propertyId
         ]);

@@ -1,12 +1,18 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Documents;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Documents::class, function (Faker $faker) {
-    return [
-        //
-    ];
-});
+class DocumentsFactory extends Factory
+{
+    protected $model = Documents::class;
+
+    public function definition(): array
+    {
+        return [
+            //
+        ];
+    }
+}

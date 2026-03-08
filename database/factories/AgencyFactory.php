@@ -1,24 +1,19 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
+
 use App\Agency;
-use Illuminate\Support\Str;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class AgencyFactory extends Factory
+{
+    protected $model = Agency::class;
 
-$factory->define(Agency::class, function (Faker $faker) {
-    return [
-        'company_name' => $faker->name,
-        'trial_ends_at' => now()->addDays(30)
-    ];
-});
+    public function definition(): array
+    {
+        return [
+            'company_name' => $this->faker->name,
+            'trial_ends_at' => now()->addDays(30),
+        ];
+    }
+}

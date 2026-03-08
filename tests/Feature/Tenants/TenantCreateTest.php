@@ -33,7 +33,7 @@ class TenantCreateTest extends TestCase
    }
 
     private function createProperty(){
-        $this->property = factory(Properties::class)->create([
+        $this->property = Properties::factory()->create([
             'agent_id' => $this->agency->id,
             'created_by_user_id' => $this->user->sub
         ]);

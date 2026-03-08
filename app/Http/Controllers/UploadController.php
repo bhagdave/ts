@@ -111,7 +111,7 @@ class UploadController extends Controller
     private function addMessageToStream($streamId, $propertyId){
         $message = "Welcome to your new property stream.  This is a place for you to communicate with everyone connected to your property.";
         activity($streamId)
-            ->causedBy(User::current()->sub)
+            ->causedBy(User::current())
             ->withProperties(['propertyId' => $propertyId, 'messageType' => 'Event' ])
             ->log($message);
     }

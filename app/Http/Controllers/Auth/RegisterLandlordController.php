@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Library\ProfileSetup;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -32,6 +33,7 @@ class RegisterLandlordController extends RegisterController
         $register = $request->session()->get('register');
         $user = $this->createNewUser($register, 'Landlord');
         Auth::login($user);
+        (new ProfileSetup())->setupProfileForUser($user);
 
         Mail::to(["dave@tenancystream.com","james@tenancystream.com", "natalie@tenancystream.com", "phil@tenancystream.com"])->queue(new WelcomeMail($user, "Landlord"));
         return redirect("/welcome");

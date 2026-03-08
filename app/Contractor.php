@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\usesUuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contractor extends Model
 {
+    use HasFactory;
     use UsesUuid;
     use SoftDeletes;
 

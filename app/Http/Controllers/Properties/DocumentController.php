@@ -54,7 +54,7 @@ class DocumentController extends BaseDocumentController
         $message = "A new document has been stored against the property. ";
         $message = $message . " You can view them by clicking on documents in left menu or on the property menu above."; 
         activity($property->stream_id)
-            ->causedBy($user->sub)
+            ->causedBy($user)
             ->withProperties(['propertyId' => $propertyId])
             ->log($message);
         $this->sendTenantUpdateEmail($property, $user);

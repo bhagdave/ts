@@ -10,63 +10,31 @@ class RolesAndPermissionsForContractors extends Migration
 
     public function up()
     {
-        DB::table('roles')->insert([
+        DB::table('roles')->insertOrIgnore([
             'name' => 'contractor',
             'title' => 'Contractor',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         $this->getRoleId();
-        DB::table('permissions')->insert([
-            [
-                'ability_id' => 6,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 13,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 20,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 23,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 25,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 26,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 29,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ],
-            [
-                'ability_id' => 30,
-                'entity_id' => $this->roleId,
-                'entity_type' => 'roles',
-                'forbidden'=> 0
-            ]
-        ]);
+
+        // Ability names corresponding to original hardcoded IDs (6,13,20,23,25,26,29,30)
+        $abilityNames = [
+            'viewProperty', 'viewLandlord', 'viewTenant',
+            'indexIssue', 'editIssue', 'viewIssue', 'updateIssue', 'viewStream',
+        ];
+        $abilities = DB::table('abilities')->whereIn('name', $abilityNames)->pluck('id');
+
+        $permissions = $abilities->map(fn($id) => [
+            'ability_id'  => $id,
+            'entity_id'   => $this->roleId,
+            'entity_type' => 'roles',
+            'forbidden'   => 0,
+        ])->values()->all();
+
+        if (!empty($permissions)) {
+            DB::table('permissions')->insert($permissions);
+        }
     }
 
     private function getRoleId(){

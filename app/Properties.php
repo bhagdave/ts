@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\MultitenantableProperty;
 use App\Traits\usesUuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +12,7 @@ use Spatie\Searchable\SearchResult;
 
 class Properties extends Model implements Searchable
 {
-
+	use HasFactory;
 	use MultitenantableProperty;
 	use UsesUuid;
 	use SoftDeletes;

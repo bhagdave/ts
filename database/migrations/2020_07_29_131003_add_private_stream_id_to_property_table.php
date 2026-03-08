@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use App\Stream;
 use App\Agent;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class AddPrivateStreamIdToPropertyTable extends Migration
 {

@@ -10,8 +10,7 @@ class CreateDocumentAbilities extends Migration
 {
     public function up()
     {        
-        $abilitiesTable = DB::table('abilities');
-        $abilityId = $abilitiesTable->insertGetId([
+        $abilityId = DB::table('abilities')->insertGetId([
             'name' => 'documentStorage',
             'title' => 'Document Storage',
             'only_owned' => 0,
@@ -19,25 +18,18 @@ class CreateDocumentAbilities extends Migration
             'updated_at' => Carbon::now()
         ]);
 
-        $permissionsTable = DB::table('permissions');
-        $permissionsTable->insert([
-            [
-                'ability_id' => $abilityId,
-                'entity_id' => 1,
-                'entity_type' => 'roles',
-                'forbidden' => 0
-            ],[
-                'ability_id' => $abilityId,
-                'entity_id' => 2,
-                'entity_type' => 'roles',
-                'forbidden' => 0
-            ],[
-                'ability_id' => $abilityId,
-                'entity_id' => 3,
-                'entity_type' => 'roles',
-                'forbidden' => 0
-            ],
-        ]);
+        $roleIds = DB::table('roles')->whereIn('name', ['agent', 'landlord', 'tenant'])->pluck('id');
+
+        $permissions = $roleIds->map(fn($id) => [
+            'ability_id'  => $abilityId,
+            'entity_id'   => $id,
+            'entity_type' => 'roles',
+            'forbidden'   => 0,
+        ])->values()->all();
+
+        if (!empty($permissions)) {
+            DB::table('permissions')->insert($permissions);
+        }
     }
 
     public function down()

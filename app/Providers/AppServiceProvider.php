@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use App\User;
-//use Auth0\Login\Repository\Auth0UserRepository as Auth0UserRepository;
-use Auth0\Login\Contract\Auth0UserRepository as Auth0UserRepository;
 use Auth;
 use Bouncer;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -13,6 +11,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Reminder;
 use App\Observers\RecurringRemindersObserver;
+use App\Services\InviteService;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider {
 	/**
@@ -21,12 +21,13 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
-		$this->app->bind(
-			\Auth0\Login\Contract\Auth0UserRepository::class,
-			\App\Repositories\CustomUserRepository::class
-		);
+		Cashier::ignoreMigrations();
+
 		$this->app->bind(\Spatie\Activitylog\ActivityLogger::class, \App\CustomActivityLogger::class);
 
+		$this->app->singleton('invite', function () {
+			return new InviteService();
+		});
 	}
 
 	/**

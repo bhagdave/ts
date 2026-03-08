@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\MultitenantableTenants;
 use App\Traits\usesUuid;
 use App\Invitation;
@@ -12,6 +13,7 @@ use Spatie\Searchable\SearchResult;
 
 class Tenant extends Model implements Searchable
 {
+    use HasFactory;
     use UsesUuid;
     use MultitenantableTenants;
 

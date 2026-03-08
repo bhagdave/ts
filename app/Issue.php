@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\MultitenantableProperty;
 use App\Traits\usesUuid;
 use App\Contractor;
@@ -12,7 +13,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
 
 class Issue extends Model
 {
-    
+    use HasFactory;
 	use UsesUuid;
 	use SoftDeletes;
 

@@ -129,7 +129,9 @@ class RegisterController extends Controller
     }
     private function updatePropertyRecord($user, $invitation){
         Auth::logout();
-        Auth::login($invitation->user);
+        if ($invitation->user) {
+            Auth::login($invitation->user);
+        }
         if (!is_null($invitation->property_id)){
             $updatedRecord = Array('created_by_user_id' => $user->sub);
             if ($user->userType == 'Agent'){
@@ -184,7 +186,9 @@ class RegisterController extends Controller
 
     private function getPropertyFromInvite($invite){
         $property = null;
-        Auth::login($invite->user);
+        if ($invite->user) {
+            Auth::login($invite->user);
+        }
         if (!is_null($invite->property_id)){
             $property = Properties::withoutGlobalScopes()->where('id', $invite->property_id)->first();
         }

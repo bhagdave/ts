@@ -40,10 +40,10 @@ class Reminder extends Model
      * This is used within the observer to make sure 
      * we do not fir off more observers 
      */
-    public function saveQuietly()
+    public function saveQuietly(array $options = [])
     {
-        return static::withoutEvents(function () {
-            return $this->save();
+        return static::withoutEvents(function () use ($options) {
+            return $this->save($options);
         });
     }
 

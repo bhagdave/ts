@@ -17,6 +17,7 @@ use Geocoder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use App\Jobs\AddUsersToNewPropertyStream;
 use App\Events\StreamUpdated;
 use DataTables;
@@ -156,7 +157,11 @@ class PropertiesController extends Controller {
     }
 
     private function getAddressLatLang(){
-        $this->address = Geocoder::getCoordinatesForAddress(request('inputAddress') . ',' . request('inputCity') . ',' . request('inputPostCode'));
+        try {
+            $this->address = Geocoder::getCoordinatesForAddress(request('inputAddress') . ',' . request('inputCity') . ',' . request('inputPostCode'));
+        } catch (\Throwable $e) {
+            $this->address = [];
+        }
 
         if (isset($this->address['lat']) && isset($this->address['lng'])) {
             $this->lat = $this->address['lat'];
@@ -260,7 +265,7 @@ class PropertiesController extends Controller {
     }
     private function createInitialStreamMessage($streamId, $propertyId, $message){
             activity($streamId)
-                ->causedBy(User::current()->sub)
+                ->causedBy(User::current())
                 ->withProperties(['propertyId' => $propertyId, 'messageType' => 'Event' ])
                 ->log($message);
     }
@@ -322,7 +327,7 @@ class PropertiesController extends Controller {
     private function uploadPropertyImage(Request $request, $property){
         if ($request->has('profileImage')) {
             $image = $request->file('profileImage');
-            $name = str_slug($request->input('name')) . '_' . time();
+            $name = Str::slug($request->input('name')) . '_' . time();
             $profileImage =  $this->uploadOne($image, 'public', $name);
         } else {
             $profileImage = $property->profileImage;
@@ -379,7 +384,7 @@ class PropertiesController extends Controller {
     
     private function createDeleteActivityRecord($user, $propertyId, $message){
         activity("DeletedProperty")
-            ->causedBy($user->sub)
+            ->causedBy($user)
             ->withProperties(['propertyId' => $propertyId])
             ->log($message);
     }

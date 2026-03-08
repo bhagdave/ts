@@ -66,7 +66,7 @@ class ProfileSetup
     private function createInitialStreamMessage($streamId, $propertyId){
         $message = "Welcome to your test property stream.  This is a place for you to communicate with everyone connected to the property. Add some test tenants to get started.";
         activity($streamId)
-            ->causedBy(User::current()->sub)
+            ->causedBy(User::current())
             ->withProperties(['propertyId' => $propertyId, 'messageType' => 'Event' ])
             ->log($message);
     }
