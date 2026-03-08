@@ -15,8 +15,6 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-\Firebase\JWT\JWT::$leeway = 6000;
-
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

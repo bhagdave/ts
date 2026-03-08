@@ -24,5 +24,5 @@ return [
     | Invitation Model
     |--------------------------------------------------------------------------
     */
-    'InvitationModel' => 'Junaidnasir\Larainvite\Models\LaraInviteModel'
+    'InvitationModel' => 'App\Invitation'
 ];

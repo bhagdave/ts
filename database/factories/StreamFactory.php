@@ -1,12 +1,19 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+namespace Database\Factories;
 
 use App\Stream;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-$factory->define(Stream::class, function (Faker $faker) {
-    return [
-        'extra_attributes' => Str::random(15),
-    ];
-});
+class StreamFactory extends Factory
+{
+    protected $model = Stream::class;
+
+    public function definition(): array
+    {
+        return [
+            'extra_attributes' => Str::random(15),
+        ];
+    }
+}

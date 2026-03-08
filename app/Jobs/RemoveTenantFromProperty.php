@@ -66,7 +66,7 @@ class RemoveTenantFromProperty implements ShouldQueue
                 'email' => $user->email,
                 'address' => address
             ];
-            Mail:to($user->email)->queue(new TenantRemovedFromProperty($mailData));
+            Mail::to($user->email)->queue(new TenantRemovedFromProperty($mailData));
         }
     }
 }

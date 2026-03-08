@@ -164,7 +164,6 @@ return [
         Silber\Bouncer\BouncerServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Junaidnasir\Larainvite\LaraInviteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -215,7 +214,7 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
-        'Invite'  => Junaidnasir\Larainvite\Facades\Invite::class,
+        'Invite'  => App\Facades\Invite::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,

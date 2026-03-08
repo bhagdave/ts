@@ -4,16 +4,16 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Auth;
 use Carbon\Carbon;
-use Junaidnasir\Larainvite\InviteTrait;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable
 {
+    use HasFactory;
     use Notifiable;
     use HasRolesAndAbilities;
-    use InviteTrait;
 
     protected $fillable = [
         'name', 'email', 'password','userType','firstName','lastName','profileImage','sub','companyName', 'registered', 'email_notifications', 'telephone'

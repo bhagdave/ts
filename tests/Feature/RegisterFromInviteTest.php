@@ -99,7 +99,7 @@ class RegisterFromInviteTest extends TestCase
     }
 
     private function createProperty(){
-        $this->property = factory(Properties::class)->create([
+        $this->property = Properties::factory()->create([
             'created_by_user_id' => $this->user->sub,
             'agent_id' => $this->agent->id
         ]);

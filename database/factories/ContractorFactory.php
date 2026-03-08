@@ -1,17 +1,23 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Contractor;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Faker\Generator as Faker;
 
-$factory->define(Contractor::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'company' => $faker->name,
-        'phone' => $faker->phoneNumber,
-        'notes' => Str::random(20)
-    ];
-});
+class ContractorFactory extends Factory
+{
+    protected $model = Contractor::class;
+
+    public function definition(): array
+    {
+        return [
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'company' => $this->faker->name,
+            'phone' => $this->faker->phoneNumber,
+            'notes' => Str::random(20),
+        ];
+    }
+}

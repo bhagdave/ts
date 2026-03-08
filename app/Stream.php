@@ -25,7 +25,7 @@ class Stream extends Model
 
     public function scopeWithExtraAttributes(): Builder
     {
-        return SchemalessAttributes::scopeWithSchemalessAttributes('extra_attributes');
+        return $this->extra_attributes->modelScope();
     }
 
 	protected $table = 'stream'; //Override 'Streams' Laravel default

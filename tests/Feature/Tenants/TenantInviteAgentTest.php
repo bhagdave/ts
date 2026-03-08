@@ -35,7 +35,7 @@ class TenantInviteAgentTest extends TestCase
 
     private function createTenantRecord(){
         $this->assertAuthenticatedAs($this->user);
-        $this->tenant = factory(Tenant::class)->create([
+        $this->tenant = Tenant::factory()->create([
             'sub' => $this->user->sub,
             'email' => $this->user->email,
         ]);

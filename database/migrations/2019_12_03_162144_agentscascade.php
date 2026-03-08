@@ -13,11 +13,12 @@ class Agentscascade extends Migration
      */
     public function up()
     {
-        
-        Schema::table('agents', function (Blueprint $table) { 
-            $table->dropForeign(['user_id']);
-            $table->foreign('user_id')->references('sub')->on('users')->onDelete('cascade');
-        });
+        if (Schema::getConnection()->getDriverName() !== 'sqlite') {
+            Schema::table('agents', function (Blueprint $table) {
+                $table->dropForeign(['user_id']);
+                $table->foreign('user_id')->references('sub')->on('users')->onDelete('cascade');
+            });
+        }
     }
 
     /**

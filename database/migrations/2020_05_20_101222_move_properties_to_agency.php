@@ -14,10 +14,11 @@ class MovePropertiesToAgency extends Migration
      */
     public function up()
     {
-        Schema::table('properties', function($table)
-        {
-            $table->dropForeign('properties_agent_id_foreign');
-        });
+        if (Schema::getConnection()->getDriverName() !== 'sqlite') {
+            Schema::table('properties', function ($table) {
+                $table->dropForeign('properties_agent_id_foreign');
+            });
+        }
         $properties = DB::table('properties')
             ->where('agent_id', '!=', '0')->get();
         foreach($properties as $property){

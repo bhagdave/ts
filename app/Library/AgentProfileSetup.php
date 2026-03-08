@@ -71,7 +71,7 @@ class AgentProfileSetup extends ProfileSetup
     private function createInitialStreamMessageForAgency($streamId){
         $message = "Welcome to your agency stream.  This is a place for you to communicate with everyone in your team.";
         activity($streamId)
-            ->causedBy(User::current()->sub)
+            ->causedBy(User::current())
             ->withProperties([ 'messageType' => 'Event' ])
             ->log($message);
     }

@@ -278,6 +278,7 @@ class IssueController extends BaseIssueController
             event(new StreamUpdated($user,$issueId,$property_id));
             Issue::where('id', $issueId)->delete();
         } catch (\Exception $e){
+            \Illuminate\Support\Facades\Log::error('IssueDeleteError: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
             return redirect()->back()->with('message',  'There was a problem deleting the Issue. Please contact Tenancy Stream with the issue no:IC-03')->withInput();
         }
 

@@ -43,7 +43,7 @@ class IssueCreateTest extends TestCase
     }
 
     protected function createProperty($userId = null, $agencyId = null){
-        $this->property = factory(Properties::class)->create([
+        $this->property = Properties::factory()->create([
             'created_by_user_id' => $userId ? : $this->user->sub,
             'agent_id' => $agencyId ? : $this->agency->id
         ]);

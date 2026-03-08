@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 //use Bouncer;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

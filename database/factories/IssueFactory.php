@@ -1,12 +1,20 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+namespace Database\Factories;
 
-use App\issue;
-use Faker\Generator as Faker;
+use App\Issue;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(issue::class, function (Faker $faker) {
-    return [
-        //
-    ];
-});
+class IssueFactory extends Factory
+{
+    protected $model = Issue::class;
+
+    public function definition(): array
+    {
+        return [
+            'description' => $this->faker->sentence(),
+            'attributes' => 'Open',
+            'location' => $this->faker->streetAddress,
+        ];
+    }
+}

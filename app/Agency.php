@@ -3,17 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Cashier\Billable;
 use App\Traits\usesUuid;
 
 class Agency extends Model
 {
+    use HasFactory;
     use UsesUuid;
     use Billable;
 
     protected $table = 'agency';
     protected $fillable = ['company_name', 'phone', 'profile_image', 'stream_id', 'trial_ends_at'];
-    protected $dates = ['trial_ends_at'];
+    protected $casts = ['trial_ends_at' => 'datetime'];
 
 
     public function agents(){

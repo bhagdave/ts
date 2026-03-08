@@ -28,7 +28,7 @@ class LoginTest extends TestCase
     }
 
     private function loginAuthenticates(){
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $response = $this->post(route('login'), [
             'email' => $user->email,
             'password' => 'password'
